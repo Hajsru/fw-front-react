@@ -29,8 +29,8 @@ class pageDetail extends Component {
 
                             <h1 className="item__title">«Убей в себе программиста-ковбоя»</h1>
                             <h2 className="item__description">Александр Горбач</h2>
-                            <p><a href="" className="item__data-link">Презентация</a></p>
-                            <p><a href="" className="item__data-link">Видео</a></p>
+                            <p><a href="/#" className="item__data-link">Презентация</a></p>
+                            <p><a href="/#" className="item__data-link">Видео</a></p>
 
                             <button className="item__btn">Комментировать</button>
                         </div>

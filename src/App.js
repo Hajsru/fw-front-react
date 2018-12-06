@@ -1,17 +1,14 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import React, { Component, Suspense, lazy } from 'react';
+import React, {Component, Suspense, lazy } from 'react';
 import Header from './navigation/Header';
 import NavbarAside from './navigation/NavbarAside';
 import './App.css';
-
-
-
-const MainPage = React.lazy(() => import('./pages/mainPage/pageMain'));
-const EventsPage = React.lazy(() => import('./pages/eventsPage/pageEvents'));
-const pageSpeakers = React.lazy(() => import('./pages/speakersPage/pageSpeakers'));
-const pageReports = React.lazy(() => import('./pages/reportsPage/pageReports'));
-const pageRegister = React.lazy(() => import('./pages/registerPage/pageRegister'));
-const pageDetail = React.lazy(() => import('./pages/detailPage/pageDetail'));
+const MainPage = lazy(() => import('./pages/mainPage/pageMain'));
+const EventsPage = lazy(() => import('./pages/eventsPage/pageEvents'));
+const SpeakersPage = lazy(() => import('./pages/speakersPage/pageSpeakers'));
+const ReportsPage = lazy(() => import('./pages/reportsPage/pageReports'));
+const RegisterPage = lazy(() => import('./pages/registerPage/pageRegister'));
+const DetailPage = lazy(() => import('./pages/detailPage/pageDetail'));
 
 class App extends Component {
   render() {
@@ -25,12 +22,12 @@ class App extends Component {
           <Router>
               <Suspense fallback={<div>Loading...</div>}>
                   <Switch>
-                      <Route exact path="/" component={MainPage}/>
-                      <Route exact path="/events" component={EventsPage}/>
-                      <Route exact path="/speakers" component={pageSpeakers}/>
-                      <Route exact path='/reports' component={pageReports}/>
-                      <Route exact path='/detail' component={pageDetail}/>
-                      <Route exact path='/registration' component={pageRegister}/>
+                      <Route exact path="/" component={ (()=>(<MainPage />)) } />
+                      <Route path="/events" component={(()=>(<EventsPage />))} />
+                      <Route path="/speakers" component={(()=>(<SpeakersPage/>))} />
+                      <Route path='/reports' component={(()=>(<ReportsPage />))} />
+                      <Route path='/detail' component={(()=>(<DetailPage/>))} />
+                      <Route path='/registration' component={(()=>(<RegisterPage />))} />
                   </Switch>
               </Suspense>
           </Router>
@@ -38,5 +35,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;
